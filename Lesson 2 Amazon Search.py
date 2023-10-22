@@ -1,7 +1,3 @@
- 29 changes: 29 additions & 0 deletions29
-amazon_search_script.py
-Viewed
-@@ -0,0 +1,29 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
