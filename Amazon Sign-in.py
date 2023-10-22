@@ -49,8 +49,8 @@ driver.find_element(By.ID, 'ap-other-signin-issues-link')
 sleep(2)
 
 
-expected_result_1 = driver.find_element(By.XPATH, "//i[@aria-label='Amazon']")
-actual_result_1 = driver.find_element(By.XPATH, "//i[@aria-label='Amazon']")
+expected_result_1 = driver.find_element(By.XPATH, "//h1[@class='a-spacing-small']")
+actual_result_1 = driver.find_element(By.XPATH, "//h1[@class='a-spacing-small']")
 
 assert expected_result_1 == actual_result_1, "Error, the sign in page did not open."
 print("Test Case 1: Passed")
