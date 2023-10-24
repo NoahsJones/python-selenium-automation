@@ -48,18 +48,17 @@ driver.find_element(By.ID, 'ap-other-signin-issues-link')
 
 sleep(2)
 
+expected_result_1 = 'Create your Amazon account'
+actual_result_1 = driver.find_element(By.ID, 'createAccountSubmit').text
 
-expected_result_1 = driver.find_element(By.XPATH, "//h1[@class='a-spacing-small']")
-actual_result_1 = driver.find_element(By.XPATH, "//h1[@class='a-spacing-small']")
-
-assert expected_result_1 == actual_result_1, "Error, the sign in page did not open."
+assert expected_result_1 == actual_result_1, f"Error, '{expected_result_1}' is not the same as '{actual_result_1}'."
 print("Test Case 1: Passed")
 
 
-expected_result_2 = driver.find_element(By.ID, 'ap_email')
-actual_result_2 = driver.find_element(By.ID, 'ap_email')
+expected_result_2 = "Email or mobile phone number"
+actual_result_2 = driver.find_element(By.XPATH, "//label[@for='ap_email']").text
 
-assert expected_result_2 == actual_result_2, "Error, there is no email field"
+assert expected_result_2 == actual_result_2, f"Error, '{expected_result_2}' is not the same as '{actual_result_2}'."
 print("Test Case 2: Passed")
 
 

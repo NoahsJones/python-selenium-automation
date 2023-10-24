@@ -37,11 +37,11 @@ driver.find_element(By.XPATH, "//button[@aria-label='Submit Search']").click()
 sleep(2)
 
 #Verification:
-expected_result = driver.find_element(By.XPATH, "//label[@for='tag-on_sale']")
-actual_result = driver.find_element(By.XPATH, "//label[@for='tag-on_sale']")
+expected_result = 'Honeycrisp Apple (Avg. 0.4lb)'
+actual_result = driver.find_element(By.XPATH, "//div[@title='Honeycrisp Apple (Avg. 0.4lb)']").text
 
 #Test assertion:
-assert expected_result == actual_result, f'Error, expected result {expected_result} did not match actual result {actual_result}'
+assert expected_result == actual_result, f'Error, expected result "{expected_result}" did not match actual result "{actual_result}"'
 print('Test Passed')
 
 driver.quit()
