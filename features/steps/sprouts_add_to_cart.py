@@ -33,7 +33,7 @@ def navigate_to_cart(context):
 @then('sprouts verify product is in cart')
 def verify_product(context):
     expected_result = 'Cinnamon Crunch Cereal'
-    actual_result = context.driver.find_element(By.XPATH, "//button[contains(text(), 'Cinnamon Crunch']")
+    actual_result = context.driver.find_element(By.XPATH, "//button[contains(text(), 'Cinnamon Crunch')]")
     assert expected_result in actual_result, f'Error, the expected "{expected_result} is not the same as actual "{actual_result}"'
     sleep(2)
 

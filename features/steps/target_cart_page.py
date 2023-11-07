@@ -3,10 +3,11 @@ from behave import given, when, then
 from time import sleep
 
 
-@when('Click on Cart icon')
-def click_on_cart(context):
-    sleep(2)
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/CartLink']").click()
+@then("target verify {product} in cart")
+def verify_cart(context, product):
+    expected_result = product
+    actual_result = context.driver.find_element(By.XPATH, "//*[contains(text(), product)]").text
+    assert expected_result in actual_result, f"Error, expected {expected_result} but got this {actual_result}"
 
 
 @then("Message displays 'Cart is empty'")
@@ -16,4 +17,3 @@ def verify_cart_empty(context):
     actual_result = context.driver.find_element(By.XPATH, "//h1[text()='Your cart is empty']").text
     assert expected_result in actual_result, (f'Error, the expected "{expected_result}" was not the same as'
                                               f'actual "{actual_result}"')
-
