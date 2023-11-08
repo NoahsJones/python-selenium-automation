@@ -9,12 +9,6 @@ def open_target_help(context):
     context.driver.get("https://help.target.com/help")
 
 
-@when("target navigate to Help page")
-def navigate_help_page(context):
-    sleep(3)
-    context.driver.find_element(By.XPATH, "//a[contains(@href, ‘/help’)]").click()
-
-
 @then("target verify {number} UI elements exist")
 def verify_ui(context, number):
     sleep(3)
