@@ -7,7 +7,7 @@ from time import sleep
 ADD_TO_CART_BTN = (By.CSS_SELECTOR, "[data-test='addToCartButton']")
 CART_SUMMARY = (By.CSS_SELECTOR, ".styles__CartSummarySpan-sc-odscpb-3.jaXVgU")
 CART_ITEM_TITLE = (By.CSS_SELECTOR, "[class*='StyledHeading'][data-test='product-title']")
-SIDE_NAV_PRODUCT_NAME = (By.CSS_SELECTOR, "h4[class*='StyleHeading']")
+SIDE_NAV_PRODUCT_NAME = (By.CSS_SELECTOR, "h4[class*='StyledHeading']")
 SEARCH_RESULT_TXT = (By.CSS_SELECTOR, "[data-test='resultsHeading']")
 COLOR_OPTIONS = (By.CSS_SELECTOR, "[class*='ButtonWrapper'] img")
 SELECTED_COLOR = (By.CSS_SELECTOR, "[class*='StyledVariationSelectorImage'] [class*='CellVariationHeaderWrapper']")
@@ -36,10 +36,11 @@ def click_and_verify_colors(context):
 
 @when("Click on Add to Cart button")
 def click_add_to_cart(context):
+    sleep(4) #To wait for the ads to disappear
     context.driver.find_element(*ADD_TO_CART_BTN).click() #find_element by default will click on the first element it finds
     #all_buttons = context.driver.find_elements(*ADD_TO_CART_BTN)
     #all_buttons[0].click()
-    sleep(6)
+    #sleep(2)
 
 
 @then("Verify cart has {amount} item(s)")

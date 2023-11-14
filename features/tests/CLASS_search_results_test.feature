@@ -9,7 +9,7 @@ Feature: CLASS tests for product page
 
   Scenario: User can add a product to cart
     Given Open target main page
-    When Search for Airpods (3rd Generation)
+    When Search for nintendo switch controller
     And Click on Add to Cart button
     And Store product name
     And Open cart page
