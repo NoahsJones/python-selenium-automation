@@ -13,7 +13,8 @@ def open_target_help(context):
 
 @then("target verify {number} UI elements exist")
 def verify_ui(context, number):
-    sleep(3)
+    sleep(0.2)
+    context.driver.wait.until(EC.visibility_of_element_located((By.XPATH, "//*[contains(text(), 'Target Help')]")))
     number = int(number)
     total = 0
     if context.driver.find_element(By.XPATH, "//*[contains(text(), 'Target Help')]"):

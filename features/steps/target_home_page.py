@@ -1,29 +1,29 @@
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver import ActionChains, Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from behave import given, when, then
 from time import sleep
-from selenium.webdriver.support.wait import WebDriverWait
 
 '''Always put 'context.driver.'etc....'''
 @given('Open target main page')
 def open_target(context):
     context.driver.get('https://www.target.com/')
-    sleep(3)
+    sleep(1)
 
 
 @when('Click on Cart icon')
 def click_on_cart(context):
-    sleep(2)
+    sleep(0.2)
+    context.driver.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-test='@web/CartLink']")))
     context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/CartLink']").click()
 
 
 @when('Click sign in')
 def click_sign_in(context):
+    context.driver.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-test='@web/AccountLink']")))
     context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/AccountLink']").click()
-    sleep(2)
+    #sleep(2)
 
 
 @when('Under navigation menu, click sign in')
@@ -52,4 +52,4 @@ def navigate_help_page(context):
     wait = WebDriverWait(context.driver, 10)
     element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "[href='https://help.target.com/help']")))
     element.click()
-    sleep(3)
+    #sleep(3)

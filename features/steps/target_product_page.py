@@ -18,8 +18,9 @@ def open_product_flannel(context):
 
 @when("target add coffee to cart")
 def add_product(context):
+    sleep(0.2)
     context.driver.find_element(*PRODUCT_FOLGERS_COFFEE).click()
-    #sleep(2)
+    sleep(0.2)
     context.driver.wait.until(EC.visibility_of_element_located(FOLGERS_COFFEE_SIDE_NAV)) #Wait until product is open and elements appear
     context.driver.find_element(*FOLGERS_COFFEE_SIDE_NAV).click()
 
@@ -29,16 +30,19 @@ def add_product(context):
 
 @then('Verify search worked for {product}')
 def verify_search(context, product):
+    sleep(0.2)
+    context.driver.wait.until(EC.text_to_be_present_in_element((By.CSS_SELECTOR, "[data-test='resultsHeading']"), product))
     expected_result = product
     actual_result = context.driver.find_element(By.CSS_SELECTOR, "[data-test='resultsHeading']").text
     assert expected_result in actual_result, f"Error, expected {expected_result} is not in actual '{actual_result}'"
-    sleep(2)
+    #sleep(2)
 
 
 
 @then('Verify {product} in search result url')#This is the And in the feature file
 def verify_search_url(context, product):
-    sleep(2)
+    sleep(0.2)
+    context.driver.wait.until(EC.url_contains(product))
     assert product in context.driver.current_url
 
 
@@ -67,13 +71,13 @@ def verify_product_colors(context):
 def verify_product_title_image(context):
     context.driver.wait.until(EC.visibility_of_element_located(PRODUCT_LIST))
     products = context.driver.find_elements(*PRODUCT_LIST)
-    item_num = 0
+    #item_num = 0
     for product in products:
         # product_title = context.driver.find_elements(By.CSS_SELECTOR, "[data-test='product-title']")
         # product_img = context.driver.find_elements(By.CSS_SELECTOR, "picture img")
 
-        context.driver.find_element(EC.presence_of_element_located((By.CSS_SELECTOR, "[data-test='product-title']")))
-        context.driver.find_element(EC.presence_of_element_located((By.CSS_SELECTOR, "picture img")))
+        product.find_element(By.CSS_SELECTOR, "[data-test='product-title']")
+        product.find_element(By.CSS_SELECTOR, "picture img")
 
         # print("Product number: ", item_num, product_title, product_img)
         # item_num += 1
