@@ -8,15 +8,16 @@ from time import sleep
 '''Always put 'context.driver.'etc....'''
 @given('Open target main page')
 def open_target(context):
-    context.driver.get('https://www.target.com/')
-    sleep(1)
-
+    # context.driver.get('https://www.target.com/')
+    # sleep(1)
+    context.app.main_page.open_main()
 
 @when('Click on Cart icon')
 def click_on_cart(context):
     sleep(0.2)
     context.driver.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-test='@web/CartLink']")))
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/CartLink']").click()
+    # context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/CartLink']").click()
+    context.app.main_page.open_cart()
 
 
 @when('Click sign in')

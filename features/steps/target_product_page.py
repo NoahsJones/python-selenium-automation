@@ -10,6 +10,8 @@ PRODUCT_FOLGERS_COFFEE = (By.CSS_SELECTOR, "[alt='Folgers Classic Medium Roast G
 FOLGERS_COFFEE_SIDE_NAV = (By.ID, "addToCartButtonOrTextIdFor13397813")
 VIEW_CART = (By.CSS_SELECTOR, "[href='/cart']")
 PRODUCT_LIST = (By.CSS_SELECTOR, "[data-test*='ProductCardWrapper']")
+PRODUCT_TITLE = "[data-test='product-title']"
+PRODUCT_IMG = "[class*='ProductCardImage']"
 
 @given("Open product page")
 def open_product_flannel(context):
@@ -41,17 +43,20 @@ def verify_search(context, product):
 
 @then('Verify {product} in search result url')#This is the And in the feature file
 def verify_search_url(context, product):
-    sleep(0.2)
-    context.driver.wait.until(EC.url_contains(product))
-    assert product in context.driver.current_url
+    # sleep(0.2)
+    # context.driver.wait.until(EC.url_contains(product))
+    # assert product in context.driver.current_url
+    context.app.search_results_page.verify_search_url(product)
+
 
 
 @then("target verify {product_result} is found")
 def verify_product_search(context, product_result):
-    sleep(4)  #Cannot find alternative for sleep
-    expected_result = product_result
-    actual_result = context.driver.find_element(By.XPATH, "//*[contains(text(), product_result)]").text
-    assert expected_result in actual_result, f"Error, expected {expected_result} and got this {actual_result} instead"
+    # sleep(4)  #Cannot find alternative for sleep
+    # expected_result = product_result
+    # actual_result = context.driver.find_element(By.XPATH, "//*[contains(text(), product_result)]").text
+    # assert expected_result in actual_result, f"Error, expected {expected_result} and got this {actual_result} instead"
+    context.app.search_results_page.verify_search_result(product_result)
 
 
 @then('Verify product colors')
@@ -71,14 +76,17 @@ def verify_product_colors(context):
 def verify_product_title_image(context):
     context.driver.wait.until(EC.visibility_of_element_located(PRODUCT_LIST))
     products = context.driver.find_elements(*PRODUCT_LIST)
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
+    sleep(2)
+    context.driver.execute_script("window.scrollBy(0,2000)", "")
     #item_num = 0
     for product in products:
         # product_title = context.driver.find_elements(By.CSS_SELECTOR, "[data-test='product-title']")
         # product_img = context.driver.find_elements(By.CSS_SELECTOR, "picture img")
 
-        product.find_element(By.CSS_SELECTOR, "[data-test='product-title']")
-        product.find_element(By.CSS_SELECTOR, "picture img")
-
+        title = product.find_element(*PRODUCT_TITLE).text
         # print("Product number: ", item_num, product_title, product_img)
         # item_num += 1
+        assert title != '', "Product title not shown"
+        product.find_element(*PRODUCT_IMG)
     print("Test case passed")

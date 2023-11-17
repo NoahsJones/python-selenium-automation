@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.wait import WebDriverWait
-
+from app.application import Application
 
 def browser_init(context):
     """
@@ -16,7 +16,7 @@ def browser_init(context):
     context.driver.wait = WebDriverWait(context.driver, 20)
 
     context.driver.implicitly_wait(4)
-
+    context.app = Application(context.driver)
 
 def before_scenario(context, scenario):
     print('\nStarted scenario: ', scenario.name)
