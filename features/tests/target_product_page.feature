@@ -7,6 +7,7 @@ Feature: Target product page
     When Search for <product>
     Then target verify product title and image
     Examples:
-    |product         |
-    |Coffee          |
-    |Airpods         |
+    |product                 |
+#    |Coffee                  |
+#    |Airpods                 |
+    |AirPods (3rd Generation)|

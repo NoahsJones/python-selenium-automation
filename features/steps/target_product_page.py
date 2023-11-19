@@ -9,9 +9,9 @@ SELECTED_COLOR = (By.CSS_SELECTOR, "[class*='StyledVariationSelectorImage'] [cla
 PRODUCT_FOLGERS_COFFEE = (By.CSS_SELECTOR, "[alt='Folgers Classic Medium Roast Ground Coffee']")
 FOLGERS_COFFEE_SIDE_NAV = (By.ID, "addToCartButtonOrTextIdFor13397813")
 VIEW_CART = (By.CSS_SELECTOR, "[href='/cart']")
-PRODUCT_LIST = (By.CSS_SELECTOR, "[data-test*='ProductCardWrapper']")
-PRODUCT_TITLE = "[data-test='product-title']"
-PRODUCT_IMG = "[class*='ProductCardImage']"
+LISTINGS = (By.CSS_SELECTOR, "[data-test='@web/site-top-of-funnel/ProductCardWrapper']")
+PRODUCT_TITLE = (By.CSS_SELECTOR, "[data-test='product-title']")
+PRODUCT_IMG = (By.CSS_SELECTOR, "[class*='ProductCardImage']")
 
 @given("Open product page")
 def open_product_flannel(context):
@@ -74,20 +74,16 @@ def verify_product_colors(context):
 
 
 @then("target verify product title and image")
-def verify_product_title_image(context):
-    context.driver.wait.until(EC.visibility_of_element_located(PRODUCT_LIST))
-    products = context.driver.find_elements(*PRODUCT_LIST)
+def verify_products_name_img(context):
     context.driver.execute_script("window.scrollBy(0,2000)", "")
     sleep(2)
     context.driver.execute_script("window.scrollBy(0,2000)", "")
-    #item_num = 0
-    for product in products:
-        # product_title = context.driver.find_elements(By.CSS_SELECTOR, "[data-test='product-title']")
-        # product_img = context.driver.find_elements(By.CSS_SELECTOR, "picture img")
 
+    all_products = context.driver.find_elements(*LISTINGS)
+    for product in all_products:
         title = product.find_element(*PRODUCT_TITLE).text
-        # print("Product number: ", item_num, product_title, product_img)
-        # item_num += 1
-        assert title != '', "Product title not shown"
+        print(title)
+        assert title, 'Product title not shown'
         product.find_element(*PRODUCT_IMG)
-    print("Test case passed")
+        sleep(0.2)
+
