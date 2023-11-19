@@ -7,3 +7,13 @@ Feature: Test for targets sign in page
     When Click sign in
     And Under navigation menu, click sign in
     Then Sign in form opened
+
+
+  Scenario: Verify a user can successfully sign in
+    Given Open target main page
+    When Click sign in
+    And Under navigation menu, click sign in
+    And Input user credentials email: leverichm@stamberg.nl password: ********
+    Then Verify user is logged in
+
+

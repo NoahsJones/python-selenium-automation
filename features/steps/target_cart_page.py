@@ -8,11 +8,13 @@ CART_PRODUCT = (By.CSS_SELECTOR, "[data-test='cartItem-title']")
 
 @then("target verify {product} in cart")
 def verify_cart(context, product):
-    context.driver.wait.until(EC.visibility_of_element_located(CART_PRODUCT))
-    #sleep(4)
-    expected_result = product
-    actual_result = context.driver.find_element(*CART_PRODUCT).text
-    assert expected_result in actual_result, f"Error, expected {expected_result} but got this {actual_result}"
+    # context.driver.wait.until(EC.visibility_of_element_located(CART_PRODUCT))
+    # #sleep(4)
+    # expected_result = product
+    # actual_result = context.driver.find_element(*CART_PRODUCT).text
+    # assert expected_result in actual_result, f"Error, expected {expected_result} but got this {actual_result}"
+    context.app.cart_page.open_cart_page()
+    context.app.cart_page.verify_product_in_cart(product)
 
 
 @then("Message displays 'Cart is empty'")

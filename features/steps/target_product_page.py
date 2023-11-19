@@ -18,16 +18,17 @@ def open_product_flannel(context):
     context.driver.get('https://www.target.com/p/men-39-s-midweight-flannel-long-sleeve-button-down-shirt-goodfellow-38-co-8482/-/A-88552425?preselect=88257254#lnk=sametab')
     sleep(6)
 
-@when("target add coffee to cart")
-def add_product(context):
-    sleep(0.2)
-    context.driver.find_element(*PRODUCT_FOLGERS_COFFEE).click()
-    sleep(0.2)
-    context.driver.wait.until(EC.visibility_of_element_located(FOLGERS_COFFEE_SIDE_NAV)) #Wait until product is open and elements appear
-    context.driver.find_element(*FOLGERS_COFFEE_SIDE_NAV).click()
-
-    context.driver.wait.until(EC.element_to_be_clickable(VIEW_CART))
-    context.driver.find_element(*VIEW_CART).click()
+@when("target add {product} to cart")
+def add_product(context, product):
+    # sleep(0.2)
+    # context.driver.find_element(*PRODUCT_FOLGERS_COFFEE).click()
+    # sleep(0.2)
+    # context.driver.wait.until(EC.visibility_of_element_located(FOLGERS_COFFEE_SIDE_NAV)) #Wait until product is open and elements appear
+    # context.driver.find_element(*FOLGERS_COFFEE_SIDE_NAV).click()
+    #
+    # context.driver.wait.until(EC.element_to_be_clickable(VIEW_CART))
+    # context.driver.find_element(*VIEW_CART).click()
+    context.app.search_results_page.add_product_to_cart()
 
 
 @then('Verify search worked for {product}')

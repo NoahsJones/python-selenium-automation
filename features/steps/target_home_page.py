@@ -22,15 +22,17 @@ def click_on_cart(context):
 
 @when('Click sign in')
 def click_sign_in(context):
-    context.driver.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-test='@web/AccountLink']")))
-    context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/AccountLink']").click()
+    # context.driver.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "[data-test='@web/AccountLink']")))
+    # context.driver.find_element(By.CSS_SELECTOR, "[data-test='@web/AccountLink']").click()
     #sleep(2)
+    context.app.main_page.open_account_side_nav()
 
 
 @when('Under navigation menu, click sign in')
 def click_navigation_menu_sign_in(context):
-    context.driver.find_element(By.XPATH, "//span[text()='Sign in' and @class='styles__ListItemText-sc-diphzn-1 jaMNVl']").click()
-    sleep(2)
+    # context.driver.find_element(By.XPATH, "//span[text()='Sign in' and @class='styles__ListItemText-sc-diphzn-1 jaMNVl']").click()
+    # sleep(2)
+    context.app.main_page.open_signin()
 
 
 @then("Verify header is present")
@@ -54,3 +56,8 @@ def navigate_help_page(context):
     element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "[href='https://help.target.com/help']")))
     element.click()
     #sleep(3)
+
+
+@then("Verify user is logged in")
+def verify_user_logged_in(context):
+    context.app.main_page.verify_user_logged_in()

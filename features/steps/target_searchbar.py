@@ -9,9 +9,10 @@ SEARCH_BTN = By.CSS_SELECTOR, "[data-test='@web/Search/SearchButton']"
 
 @when("target search for {product}")
 def search_product(context, product):
-    context.driver.find_element(*SEARCH_FIELD).send_keys(product)
-    context.driver.find_element(*SEARCH_BTN).click()
-    sleep(2) #Cannot find alternative for sleep
+    # context.driver.find_element(*SEARCH_FIELD).send_keys(product)
+    # context.driver.find_element(*SEARCH_BTN).click()
+    # sleep(2) #Cannot find alternative for sleep
+    context.app.main_page.search(product)
 
 @when('Search for {product}')
 def search_product(context, product):

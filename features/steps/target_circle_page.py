@@ -17,3 +17,13 @@ def benefit_boxes(context, number):
     )
     benefit_box_list = context.driver.find_elements(By.CSS_SELECTOR, "li[class*='styles__BenefitCard']")
     assert len(benefit_box_list) == int(number), f'Error, there are {len(benefit_box_list)} elements instead of {number} elements for the benefit boxes'
+
+
+@given("Open target circle page")
+def open_circle_page(context):
+    context.app.circle_page.open_circle_page()
+
+
+@then("Verify clicking through Circle tab works")
+def verify_circle_tabs(context):
+    context.app.circle_page.verify_can_click_tabs()

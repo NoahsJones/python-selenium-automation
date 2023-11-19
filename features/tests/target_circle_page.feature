@@ -6,3 +6,8 @@ Feature: Target Circle
     Given Open target main page
     When Click on target circle
     Then Verify 5 benefit boxes display
+
+
+  Scenario: User can click through circle tabs
+    Given Open target circle page
+    Then Verify clicking through Circle tab works
