@@ -17,3 +17,17 @@ Feature: Test for targets sign in page
     Then Verify user is logged in
 
 
+
+  Scenario: User can open and close Terms and Conditions from sign in page
+    #Given target Open sign in page ..... this was not working so I had to lengthen my test preconditions. However, it works the same
+    Given Open target main page
+    When Click sign in
+    And Under navigation menu, click sign in
+    And Store original windows
+    When Click on Target terms and conditions link
+    And Switch to the newly opened window
+    Then Verify Terms and Conditions page is opened
+    And User can close new window and switch back to original
+
+
+
