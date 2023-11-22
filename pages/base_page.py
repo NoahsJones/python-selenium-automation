@@ -72,3 +72,28 @@ class Page:
         self.wait.until(EC.url_contains(expected_partial_url), message=f"Expected '{expected_partial_url}' not in url")
 
 
+    def get_current_window(self):
+        return self.driver.current_window_handle
+
+
+    def get_all_windows(self):
+        return self.driver.window_handles
+
+
+    def switch_to_new_window(self):
+        self.driver.wait.until(EC.new_window_is_opened)
+        new_window = self.driver.window_handles[1]
+        self.driver.switch_to.window(new_window)
+
+
+    def close_page(self):
+        self.driver.close()
+
+
+    def switch_to_window(self, window_id):
+        self.driver.switch_to.window(window_id)
+
+
+
+
+
