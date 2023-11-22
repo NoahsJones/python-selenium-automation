@@ -30,19 +30,19 @@ def browser_init(context, scenario_name):
 
 
     ##BROWSERSTACK##
-    # bs_user = 'noahsj_p3KDFs'
-    # bs_key = 'BAiKTuqj9kkQtzaDyRBE'
-    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-    # #
-    # options = Options()
-    # bstack_options = {
-    #     'os': 'Windows',
-    #     'osVersion': '10',
-    #     'browserName': 'Firefox',
-    #     'sessionName': scenario_name
-    # }
-    # options.set_capability('bstack:options', bstack_options)
-    # context.driver = webdriver.Remote(command_executor=url, options=options)
+    bs_user = 'noahsj_p3KDFs'
+    bs_key = 'BAiKTuqj9kkQtzaDyRBE'
+    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    #
+    options = Options()
+    bstack_options = {
+        'os': 'Windows',
+        'osVersion': '10',
+        'browserName': 'Firefox',
+        'sessionName': scenario_name
+    }
+    options.set_capability('bstack:options', bstack_options)
+    context.driver = webdriver.Remote(command_executor=url, options=options)
 
 
 
