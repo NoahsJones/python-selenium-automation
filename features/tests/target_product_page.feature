@@ -8,6 +8,6 @@ Feature: Target product page
     Then target verify product title and image
     Examples:
     |product                 |
-#    |Coffee                  |
-#    |Airpods                 |
+#    |Coffee                  | #These failed because the code to scroll did not scroll to the very bottom of the product
+#    |Airpods                 | #page to make all products load.
     |AirPods (3rd Generation)|

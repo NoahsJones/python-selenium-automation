@@ -30,4 +30,13 @@ Feature: Test for targets sign in page
     And User can close new window and switch back to original
 
 
+  Scenario: User cannot find account message
+    Given Open target main page
+    When Click sign in
+    And Under navigation menu, click sign in
+    When Input user credentials email: adasdada@email.com password: adasdada@email.com
+    Then Verify user account not found message
+
+
+
 

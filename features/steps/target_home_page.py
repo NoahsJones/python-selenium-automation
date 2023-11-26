@@ -61,3 +61,13 @@ def navigate_help_page(context):
 @then("Verify user is logged in")
 def verify_user_logged_in(context):
     context.app.main_page.verify_user_logged_in()
+
+
+@when("Hover over signin")
+def hover_signin(context):
+    context.app.main_page.hover_over_signin()
+
+@then("Verify signin arrow shown")
+def verify_signin_arrow(context):
+    context.app.main_page.verify_signin_arrow_shown()
+

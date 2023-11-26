@@ -1,5 +1,6 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.alert import Alert
 
 class Page:
     def __init__(self, driver):
@@ -36,10 +37,11 @@ class Page:
 
 
     def wait_for_element_appear(self, *locator):
-        (self.wait.until(
+        element = (self.wait.until(
             EC.visibility_of_element_located(locator),
             message=f"Element by {locator} not visible")
          )
+        return element
 
     def wait_for_element_disappear(self, *locator):
         (self.wait.until(
@@ -47,12 +49,20 @@ class Page:
             message=f"Element by {locator} is still visible")
          )
 
+
+    def wait_for_element_visible(self, *locator):
+        element = (self.wait.until(
+            EC.visibility_of_element_located(locator),
+            message=f"Element by {locator} is still visible")
+        )
+        return element
+
+
     def wait_for_url_change(self, initial_url):
         (self.wait.until(
             EC.url_changes(initial_url),
             message=f"URL {initial_url} did not change")
         )
-
 
     def verify_partial_text(self, expected_text, *locator):
         actual_text = self.find_element(*locator).text
@@ -92,6 +102,17 @@ class Page:
 
     def switch_to_window(self, window_id):
         self.driver.switch_to.window(window_id)
+
+
+    def alert_accept(self):
+        alert = Alert(driver=self.driver)
+        alert.accept()
+
+
+    def alert_dismiss(self):
+        alert = Alert(driver=self.driver)
+        alert.dismiss()
+
 
 
 

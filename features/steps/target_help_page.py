@@ -32,5 +32,25 @@ def verify_ui(context, number):
     assert total == number, f"Error, expected {number} UI elements and got {total} UI elements"
 
 
+@given("Open target help returns page")
+def open_help_returns(context):
+    context.app.help_page.open_help_returns()
+
+
+@then("Verify Returns page opened")
+def verify_returns_opened(context):
+    context.app.help_page.verify_returns_opened()
+
+
+@when("Select Help topic {topic}")
+def select_promotions(context, topic):
+    context.app.help_page.select_topic(topic)
+
+
+@then("Verify Help topic page opened")
+def verify_topic_opened(context):
+    context.app.help_page.verify_topic_opened()
+
+
 
 

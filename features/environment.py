@@ -11,9 +11,9 @@ def browser_init(context, scenario_name):
     :param context: Behave context
     """
     ###CHROME BROWSER###
-    # driver_path = ChromeDriverManager().install()
-    # service = Service(driver_path)
-    # context.driver = webdriver.Chrome(service=service)
+    driver_path = ChromeDriverManager().install()
+    service = Service(driver_path)
+    context.driver = webdriver.Chrome(service=service)
 
     ##CHROME HEADLESS MODE##
     # options = webdriver.ChromeOptions()
@@ -22,27 +22,30 @@ def browser_init(context, scenario_name):
     # context.driver = webdriver.Chrome(options=options, service=service)
 
     ###FIREFOX BROWSER###
-    service = Service(executable_path="C:/Users/noahsj/python-selenium-automation/geckodriver")
-    context.driver = webdriver.Firefox(service=service)
+    #DESKTOP PATH#
+    #service = Service(executable_path="C:/Users/noahsj/python-selenium-automation/geckodriver")
+    #LAPTOP PATH#
+    # service = Service(executable_path="C:/Users/noahs/python-selenium-automation/geckodriver")
+    # context.driver = webdriver.Firefox(service=service)
 
     ###SAFARI BROWSER### can't use since I do not have Safari installed
     # context.driver = webdriver.Safari()
 
 
     ##BROWSERSTACK##
-    bs_user = 'noahsj_p3KDFs'
-    bs_key = 'BAiKTuqj9kkQtzaDyRBE'
-    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-    #
-    options = Options()
-    bstack_options = {
-        'os': 'Windows',
-        'osVersion': '10',
-        'browserName': 'Firefox',
-        'sessionName': scenario_name
-    }
-    options.set_capability('bstack:options', bstack_options)
-    context.driver = webdriver.Remote(command_executor=url, options=options)
+    # bs_user = 'noahsj_p3KDFs'
+    # bs_key = 'BAiKTuqj9kkQtzaDyRBE'
+    # url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    # #
+    # options = Options()
+    # bstack_options = {
+    #     'os': 'Windows',
+    #     'osVersion': '10',
+    #     'browserName': 'Firefox',
+    #     'sessionName': scenario_name
+    # }
+    # options.set_capability('bstack:options', bstack_options)
+    # context.driver = webdriver.Remote(command_executor=url, options=options)
 
 
 

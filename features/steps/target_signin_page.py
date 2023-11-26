@@ -52,3 +52,8 @@ def verify_sign_in(context):
 @when("Input user credentials email: {email} password: {password}")
 def input_credentials(context, email, password):
     context.app.sign_in_page.log_in(email, password)
+
+
+@then("Verify user account not found message")
+def verify_account_not_found(context):
+    context.app.sign_in_page.verify_account_not_found()

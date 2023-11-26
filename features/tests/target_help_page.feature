@@ -11,3 +11,10 @@ Feature: Target Help page
   Scenario: From Help page, verify UI elements appear on Help page
     Given Open target help page
     Then target verify 14 UI elements exist
+
+
+  Scenario: User can select Help topic
+    Given Open target help returns page
+    Then Verify Returns page opened
+    When Select Help topic Promotions & Coupons
+    Then Verify Help topic page opened
