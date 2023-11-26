@@ -1,6 +1,7 @@
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.alert import Alert
+from selenium.webdriver.common.action_chains import ActionChains
 
 class Page:
     def __init__(self, driver):
@@ -112,6 +113,13 @@ class Page:
     def alert_dismiss(self):
         alert = Alert(driver=self.driver)
         alert.dismiss()
+
+
+    def scroll_down(self, y_axis):
+        action = ActionChains(driver=self.driver)
+        action.scroll_by_amount(0, y_axis)
+        action.perform()
+
 
 
 
