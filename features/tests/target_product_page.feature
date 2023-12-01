@@ -2,6 +2,7 @@
 Feature: Target product page
   # Enter feature description here
 
+  @smoke
   Scenario Outline: Verify that all products on product page have title and image
     Given Open target main page
     When Search for <product>

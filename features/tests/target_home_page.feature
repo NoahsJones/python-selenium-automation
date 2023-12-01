@@ -2,6 +2,7 @@
 Feature: Home page of Target
   # Enter feature description here
 
+  @smoke
   Scenario: Header has correct amount of UI elements
     Given Open target main page
     Then Verify header is present

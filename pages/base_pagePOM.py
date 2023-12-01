@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.common.action_chains import ActionChains
+from support.logger import logger
 
 class Page:
     def __init__(self, driver):
@@ -11,21 +12,25 @@ class Page:
 
     def click(self, *locator):
         self.driver.find_element(*locator).click()
+        logger.info(f'Clicking on {locator}')
 
 
     def open_url(self, url):
         self.driver.get(url)
-
+        logger.info(f'Opening url {url}')
 
     def find_element(self, *locator):
+        logger.info(f'Searching for element {locator}')
         return self.driver.find_element(*locator)
 
 
     def find_elements(self, *locator):
+        logger.info(f'Searching for elements {locator}')
         return self.driver.find_elements(*locator)
 
     
     def input(self, text, *locator):
+        logger.info(f'Inputting text "{text}" for element {locator}')
         self.driver.find_element(*locator).send_keys(text)
 
 
@@ -120,6 +125,9 @@ class Page:
         action.scroll_by_amount(0, y_axis)
         action.perform()
 
+
+    def save_screenshot(self, name):
+        self.driver.save_screenshot(f'{name}.png')
 
 
 

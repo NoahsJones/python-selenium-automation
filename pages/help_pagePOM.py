@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import Select
 from time import sleep
+from support.logger import logger
 
 
 class HelpPage(Page):
@@ -25,6 +26,7 @@ class HelpPage(Page):
 
     def select_topic(self, topic):
         topic_selection = self.find_element(*self.TOPIC_SELECTION)
+        logger.info(f'Selecting {topic} from dropdown')
         select = Select(topic_selection)
         select.select_by_value(topic)
 

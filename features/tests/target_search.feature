@@ -22,7 +22,7 @@ Feature: Search tests
     Then Verify search worked for Christmas Decorations
     And Verify Christmas+Decorations in search result url
 
-
+  @smoke
   Scenario Outline: Verify products can be searched.
     Given Open target main page
     When target search for <product>
