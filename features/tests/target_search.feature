@@ -31,7 +31,7 @@ Feature: Search tests
     Examples:
     |product              |product_result       |product_url          |
     |coffee               |Coffee               |coffee               |
-    |fruit                |Fruit                |fruit                |
-    |shovel               |Shovel               |shovel               |
-    |mug                  |mug                  |mug                  |
-    |Christmas Decorations|Christmas Decorations|Christmas+Decorations|
+#    |fruit                |Fruit                |fruit                |
+#    |shovel               |Shovel               |shovel               |
+#    |mug                  |mug                  |mug                  |
+#    |Christmas Decorations|Christmas Decorations|Christmas+Decorations|

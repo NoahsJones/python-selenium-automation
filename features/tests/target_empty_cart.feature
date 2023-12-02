@@ -2,6 +2,7 @@
 Feature: Test for targets empty cart
   testing targets empty cart feature for lesson 3 hw
 
+  @smoke
   Scenario: Verify that cart displays it is empty
     Given Open target main page
     When Click on Cart icon

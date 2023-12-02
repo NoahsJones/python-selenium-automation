@@ -75,9 +75,10 @@ def verify_product_colors(context):
 
 @then("target verify product title and image")
 def verify_products_name_img(context):
-    context.driver.execute_script("window.scrollBy(0,2000)", "")
-    sleep(2)
-    context.driver.execute_script("window.scrollBy(0,2000)", "")
+    # context.driver.execute_script("window.scrollBy(0,2000)", "")
+    # sleep(2)
+    # context.driver.execute_script("window.scrollBy(0,2000)", "")
+    context.app.page.scroll_down(4000)
 
     all_products = context.driver.find_elements(*LISTINGS)
     for product in all_products:

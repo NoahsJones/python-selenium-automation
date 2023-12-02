@@ -2,6 +2,7 @@
 Feature: Product color variations
   # Enter feature description here
 
+  @smoke
   Scenario: loop through product color variations
     Given Open product page
     Then Verify product colors

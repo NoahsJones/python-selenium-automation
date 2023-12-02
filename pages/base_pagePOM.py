@@ -2,6 +2,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.common.alert import Alert
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 from support.logger import logger
 
 class Page:
@@ -122,8 +123,11 @@ class Page:
 
     def scroll_down(self, y_axis):
         action = ActionChains(driver=self.driver)
-        action.scroll_by_amount(0, y_axis)
+        logger.info("Scrolling down page")
+        scroll_amount = y_axis
+        action.send_keys(Keys.ARROW_DOWN * scroll_amount)  # You can adjust the number based on your needs
         action.perform()
+
 
 
     def save_screenshot(self, name):
